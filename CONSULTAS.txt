@@ -1,0 +1,39 @@
+CONSULTAS
+
+
+
+Fazer uma consulta geral, exibindo todos os registros (SELECT).
+
+SELECT * FROM `agendamento`
+SELECT FROM `cliente`
+SELECT FROM `servicos`
+SELECT FROM `funcionarios`
+SELECT FROM `pagamentos`
+
+-------------------------------------------------------------------
+Fazer uma consulta por código/ID, buscando um registro específico (SELECT 
+com WHERE). 
+
+SELECT coluna FROM `tabela` WHERE "ID DO CADASTRO" = "NUMERO DO ID";
+
+
+SELECT NOME FROM `cliente` WHERE id_cliente = 5;
+
+--------------------------------------------------------------------
+
+Deletar 1 registro (DELETE). 
+
+DELETE FROM "TABELA" WHERE "id do registro" = "NUMERO DO ID" 
+
+DELETE FROM cliente WHERE id_cliente = 5;
+
+----------------------------------------------------------------------
+
+Alterar 1 registro (UPDATE).
+
+
+UPDATE "tabela" SET "coluna" = 'NOVO VALOR' WHERE "Id do registro = "numero do id";
+
+UPDATE cliente SET NOME = 'Maria Souza' WHERE id_cliente = 1;
+
+

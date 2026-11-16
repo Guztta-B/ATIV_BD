@@ -1,0 +1,164 @@
+CRIAR O BANCO
+
+CREATE DATABASE SALA_DE_BELEZA;
+
+--------------------------------------------------
+
+CRIAR TABELAS
+cliente
+
+CREATE TABLE cliente (
+id_cliente INT PRIMARY KEY AUTO_INCREMENT,
+nome VARCHAR(50),
+telefone INT(10)
+ );
+
+---------------------------------------------------
+serviços
+
+CREATE TABLE servicos (
+    id_servico INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(50) NOT NULL,
+    categoria VARCHAR(30),
+    preco DECIMAL(8,2),
+    duracao_minutos INT
+);
+
+
+----------------------------------------------------
+
+ADD SERVICOS
+
+INSERT INTO servicos (nome, categoria, preco, duracao_minutos) VALUES
+('Lavagem de cabelo', 'Cabelo', 30.00, 20),
+('Corte feminino', 'Cabelo', 80.00, 45),
+('Corte masculino', 'Cabelo', 45.00, 30),
+('Corte infantil', 'Cabelo', 35.00, 30),
+('Escova', 'Cabelo', 50.00, 40),
+('Escova progressiva', 'Cabelo', 250.00, 180),
+('Hidratação', 'Cabelo', 90.00, 60),
+('Cauterização', 'Cabelo', 120.00, 90),
+('Coloração', 'Cabelo', 150.00, 120),
+('Mechas / Luzes', 'Cabelo', 300.00, 210),
+('Penteado para festa', 'Cabelo', 120.00, 60),
+('Barba', 'Barbearia', 35.00, 30),
+('Manicure', 'Unhas', 35.00, 45),
+('Pedicure', 'Unhas', 40.00, 50),
+('Esmaltação em gel', 'Unhas', 70.00, 60),
+('Alongamento de unhas', 'Unhas', 150.00, 120),
+('Design de sobrancelha', 'Estética', 40.00, 30),
+('Henna de sobrancelha', 'Estética', 45.00, 30),
+('Depilação facial', 'Estética', 25.00, 15),
+('Depilação de axila', 'Estética', 25.00, 15),
+('Limpeza de pele', 'Estética', 130.00, 75),
+('Maquiagem', 'Estética', 150.00, 60),
+('Massagem relaxante', 'Estética', 120.00, 60);
+
+
+------------------------------------------------------------------------------
+
+CRIAR TABELA FUNCIONARIO
+
+
+CREATE TABLE funcionarios (
+ID INT PRIMARY KEY AUTO_INCREMENT,
+nome VARCHAR(45),
+cpf INT(15),
+telefone INT(10),
+cargo VARCHAR(30)
+);
+
+------------------------------------------------------------------------------
+
+AGENDAMENTO
+
+CREATE TABLE agendamento (
+    id_agendamento INT PRIMARY KEY AUTO_INCREMENT,
+    cliente VARCHAR(50) NOT NULL,
+    data_hora DATETIME NOT NULL,
+    servico VARCHAR(50) NOT NULL
+);
+
+------------------------------------------------------------------------------
+
+
+PAGAMENTO
+
+
+CREATE TABLE pagamentos ( id_pagamento INT PRIMARY KEY AUTO_INCREMENT, numero_atendimento INT(10), nome_cliente VARCHAR(50), status_pagamento VARCHAR(10), metodo_de_pagamento VARCHAR(10), valor DECIMAL(10, 2), data_inicial DATETIME NOT NULL, data_final DATETIME NOT NULL );
+
+
+--------------------------------------------------------------------------------
+
+INSERIR CLIENTE
+
+
+INSERT INTO cliente (NOME, TELEFONE) VALUES
+('Maria Silva',      11910329846),
+('João Pereira',     11910329842),
+('Ana Souza',        11910329812),
+('Carlos Oliveira',  11910329231),
+('Fernanda Lima',    11910329813),
+('Rafael Santos',    11910329123),
+('Juliana Costa',    11910329846),
+('Pedro Almeida',    11910329123),
+('Camila Rocha',    11910329323),
+('Lucas Martins',    1191032432);
+
+
+
+---------------------------------------------------------------------------------
+
+
+INSERIR AGENDAMENTOS
+
+
+
+INSERT INTO agendamentos (cliente, data_hora, servico) VALUES
+('Maria Silva',      '2026-11-16 09:00:00', 'Corte de cabelo'),
+('João Pereira',     '2026-11-16 10:30:00', 'Barba'),
+('Ana Souza',        '2026-11-16 14:00:00', 'Manicure'),
+('Carlos Oliveira',  '2026-11-17 08:30:00', 'Corte e barba'),
+('Fernanda Lima',    '2026-11-17 11:00:00', 'Escova progressiva'),
+('Rafael Santos',    '2026-11-18 15:30:00', 'Corte de cabelo'),
+('Juliana Costa',    '2026-11-18 16:45:00', 'Coloração'),
+('Pedro Almeida',    '2026-11-19 09:15:00', 'Barba'),
+('Camila Rocha',     '2026-11-19 13:00:00', 'Pedicure'),
+('Lucas Martins',    '2026-11-20 17:00:00', 'Hidratação capilar');
+
+
+
+--------------------------------------------------------------------------------
+
+
+INSERIR FUNCIONARIOS
+
+
+INSERT INTO funcionarios (nome, idade, cpf, telefone, cargo) VALUES
+('Maria Silva',     28, 1234567890, 911234567, 'Recepcionista'),
+('João Pereira',    35, 1987654321, 922345678, 'Gerente'),
+('Ana Souza',       24, 1456789012, 933456789, 'Auxiliar Administrativo'),
+('Carlos Oliveira', 41, 1345678901, 944567890, 'Supervisor'),
+('Fernanda Lima',   30, 1234509876, 955678901, 'Analista Financeiro'),
+('Rafael Santos',   27, 2012345678, 966789012, 'Atendente'),
+('Juliana Costa',   33, 1765432109, 977890123, 'Coordenadora');
+
+
+-------------------------------------------------------------------------------
+
+
+INSERIR PAGAMENTO
+
+INSERT INTO pagamentos (numero_atendimento, nome_cliente, status_pagamento, metodo_de_pagamento, valor, data_inicial, data_final) VALUES
+(1001, 'Maria Silva',     'Pago',      'Pix',      50.00,  '2026-11-16 09:00:00', '2026-11-16 09:45:00'),
+(1002, 'João Pereira',    'Pago',      'Dinheiro', 35.00,  '2026-11-16 10:30:00', '2026-11-16 11:00:00'),
+(1003, 'Ana Souza',       'Pendente',  'Cartão',   45.00,  '2026-11-16 14:00:00', '2026-11-16 14:50:00'),
+(1004, 'Carlos Oliveira', 'Pago',      'Débito',   80.00,  '2026-11-17 08:30:00', '2026-11-17 09:30:00'),
+(1005, 'Fernanda Lima',   'Pago',      'Crédito',  250.00, '2026-11-17 11:00:00', '2026-11-17 14:00:00'),
+(1006, 'Rafael Santos',   'Cancelado', 'Pix',      50.00,  '2026-11-18 15:30:00', '2026-11-18 16:15:00'),
+(1007, 'Juliana Costa',   'Pendente',  'Pix',      180.00, '2026-11-18 16:45:00', '2026-11-18 18:30:00');
+
+
+----------------------------------------------------------------------------------
+
+

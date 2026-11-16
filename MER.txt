@@ -1,0 +1,9 @@
+MER 
+
+
+Entidade	Chave primária	Atributos
+CLIENTE	id_cliente	NOME, TELEFONE
+AGENDAMENTO	id_agendamento	cliente, data_hora, servico
+SERVICOS	id_servico	nome, categoria, preco, duracao_minutos
+PAGAMENTOS	id_pagamento	numero_atendimento, nome_cliente, status_pagamento, metodo_de_pagamento, valor, data_inicial, data_final
+FUNCIONARIOS	ID	nome, idade, cpf, telefone, cargo
